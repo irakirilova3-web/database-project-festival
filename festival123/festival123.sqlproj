@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build">
+  <Sdk Name="Microsoft.Build.Sql" Version="1.0.0" />
+  <PropertyGroup>
+    <Name>Festival de ski Avoriaz</Name>
+    <ProjectGuid>{21AE55A3-4EB8-4BB6-8E42-E8D00770AB39}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
+    <ModelCollation>1033, CI</ModelCollation>
+  </PropertyGroup>
+
+  <!-- include all SQL files in the project so Build/Publish picks them up -->
+  <ItemGroup>
+    <Build Include="**\*.sql" />
+    <None Include=".vscode\tasks.json" />
+  </ItemGroup>
+
+  <Target Name="BeforeBuild">
+    <Delete Files="$(BaseIntermediateOutputPath)\project.assets.json" />
+  </Target>
+</Project>
