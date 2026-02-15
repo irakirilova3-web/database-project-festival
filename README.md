@@ -1,4 +1,61 @@
 # database-project-festival
+EN version
+
+Snowboxx Festival Management System
+
+A robust relational database system designed to manage a large-scale music festival, including ticket sales, RFID access control (wristbands), stage scheduling, and automated business rules.
+
+Technologies & Tools
+* **Database:** Oracle Database (PL/SQL)
+* **Modeling:** 3rd Normal Form (3NF)
+* **Key Features:** Triggers, Sequences, Advanced SQL Queries
+
+Why Oracle Database?
+This project utilizes **Oracle Database** for its enterprise-grade reliability and powerful PL/SQL engine. 
+* **Data Integrity:** Use of complex constraints (`PRIMARY KEY`, `FOREIGN KEY`, `CHECK`) to ensure data consistency across tickets and concerts.
+* **Automation:** Business logic is embedded directly into the database via **Triggers** (e.g., age verification, scheduling conflict prevention).
+* **Efficiency:** Advanced date manipulation using `TO_DATE` and `TIMESTAMP` for real-time access tracking.
+
+---
+
+Database schema (Normalization)
+The model was refactored from a flat-file structure to **3rd Normal Form (3NF)** to eliminate redundancy.
+
+Core tables:
+| Table | Description |
+| :--- | :--- |
+| **Spectateur** | Personal info (Name, Age, ID). |
+| **Billet** | Ticket purchases linked to spectators and RFID wristbands. |
+| **Type_Billet** | Defines pricing, validity, and access conditions. |
+| **Bracelet** | RFID hardware tracking (Active/Inactive status). |
+| **Concert & Scene** | Scheduling of artists across various festival stages. |
+| **Passage** | Real-time entry logs for every stage access. |
+| **Bracelet_Status_Audit** | Traceability for lost or deactivated wristbands. |
+
+
+Automated business rules (Triggers)
+To ensure a seamless festival experience, the following triggers are implemented:
+* **`trg_Interdire_Billet_Mineur`**: Prevents ticket sales to anyone under 18.
+* **`trg_Conflit_Concert_Scene`**: Ensures no two concerts are scheduled on the same stage within 1 hour of each other.
+* **`trg_Verif_Heures_Passage`**: Validates that a spectator's ticket type allows entry at the current time.
+* **`trg_Avant_Inserer_Billet_DateDefault`**: Automatically timestamps new tickets if the date is missing.
+
+
+Analytical queries
+The system includes 14 mandatory reporting queries, such as:
+* Total and monthly revenue tracking.
+* Most/least attended stages and concerts.
+* Personal attendance history for specific spectators.
+* Daily entry statistics per stage.
+
+
+Installation & setup
+1.  Connect to your Oracle instance (SQL Developer, SQLcl, or Oracle Live SQL).
+2.  Run the **Table Creation** scripts.
+3.  Execute the **Trigger** scripts to enable automation.
+4.  Run the **Seed Data** (Alimentation) scripts to populate the database with test entities.
+
+-----------------------------------------------------------------------------------------------------
 Version FR
 
 Choix de la base de données et technologies 
