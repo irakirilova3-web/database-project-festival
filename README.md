@@ -1,5 +1,5 @@
 # database-project-festival
-This is one of my projects made for my Databases course
+Version FR
 
 Choix de la base de données et technologies 
 
