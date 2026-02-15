@@ -2,6 +2,7 @@
 This is one of my projects made for my Databases course
 
 Choix de la base de données et technologies 
+
 Pour ce projet, j’ai choisi Oracle Database (PL/SQL) comme système de gestion de base 
 de données relationnelle. Ce choix repose à la fois sur des aspects techniques et 
 fonctionnels essentiels au projet, ainsi que sur certaines contraintes liées à mon 
@@ -33,8 +34,9 @@ Oracle est également reconnu pour sa robustesse et sa capacité à gérer des b
 données complexes, avec de nombreuses relations et contraintes. Pour un projet simulant 
 un festival avec plusieurs entités interconnectées, il assure fiabilité, performance et 
 sécurité des données.
-4 de 7
+
 Analyse des données et normalisation
+
 Dans un premier temps, j’ai utilisé le fichier SQL fourni dans le cadre du projet “Gestion 
 de festival” comme point de départ. Ce fichier contient une première version des tables, 
 mais leur structure ne respectait pas totalement les principes de normalisation (3NF). En 
@@ -44,7 +46,9 @@ l’intégrité référentielle entre les entités. J’ai donc entrepris une re
 du modèle de données pour simplifier les tests et la compréhension du modèle. Je mets 
 plus de détails dans les parties suivantes qui décrivent les tables, les requêtes et les 
 triggers.
+
 Tables
+
 La base de données du festival Snowboxx a été conçue pour modéliser de manière 
 cohérente les différentes entités. Elle se compose des tables Type_Billet, Scene, Bracelet, 
 Bracelet_Status_Audit, Spectateur, Billet, Concert et Passage. Chaque table respecte les 
@@ -70,7 +74,7 @@ genre musical, date et heure, ainsi que la scène associée.
 - Passage - enregistre chaque passage d’un spectateur dans une scène via son 
 bracelet et billet. La table contient le type de passage (entry par défaut) et l’heure 
 exacte du passage (datetime_passage).
-5 de 7
+
 La table Bracelet_Status_Audit a été créée pour permettre le suivi des changements de 
 statut des bracelets RFID utilisés au festival Snowboxx. Chaque bracelet peut avoir 
 différents statuts tels qu'actif, inactif ou suspendu temporairement. Bien qu’aucun trigger 
@@ -79,7 +83,9 @@ la table est conçue pour accueillir ces informations si un besoin de traçabili
 présenter. Cette anticipation reflète la réalité des événements. Par exemple un bracelet 
 peut être perdu, désactivé ou réactivé, et garder une historique de ces modifications peut 
 être utile pour la sécurité et la gestion du festival.
+
 Tables d’alimentation 
+
 Les tables d’alimentation contiennent les instructions d’insertion des données initiales 
 dans la base. Elles permettent l’insertion des types de billets avec leurs caractéristiques 
 (prix, durée, horaires, conditions d’accès), l’ajout des scènes et concerts programmés 
@@ -90,7 +96,9 @@ triggers et les requêtes d’analyse. Elles respectent la normalisation en sép
 pour éviter la duplication de données et en utilisant des clés étrangères pour maintenir 
 les relations (par exemple entre Billet, Spectateur, et Bracelet). Chaque table possède
 d’entre 6 et 11 entités pour le moment.
+
 Requêtes
+
 Les scripts de requêtes servent à exploiter les données pour générer des informations 
 utiles à la gestion du festival comme :
 • Nombre de billets vendus par type
@@ -103,7 +111,9 @@ Ou autrement dit les 14 requêtes obligatoires de la fiche du projet. Ces requê
 l’usage de fonctionnalités avancées d’Oracle, telles que JOIN, GROUP BY, FETCH FIRST 
 ROWS ONLY, TO_DATE, et TO_TIMESTAMP, et permettent de vérifier la cohérence des 
 données et la pertinence des règles métier implémentées par les triggers.
+
 Triggers
+
 Pour garantir la cohérence et la sécurité des données dans la base, plusieurs triggers ont 
 été créés. 
 
